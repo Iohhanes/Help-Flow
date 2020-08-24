@@ -10,7 +10,7 @@
 
 
     <properties>
-        <spring.version>5.0.9.RELEASE</spring.version>
+        <spring.version>5.2.8.RELEASE</spring.version>
         <spring.data.version>2.1.4.RELEASE</spring.data.version>
         <spiing.security.version>5.0.8.RELEASE</spiing.security.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
