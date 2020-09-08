@@ -4,52 +4,19 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 @ToString
 public class Post {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "post_id")
-    @Getter
     @Setter
-    private Long postId;
-
-    @OneToMany(mappedBy = "post",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
     @Getter
-    @Setter
-    private List<PostElement> elements;
+    @Column(name = "folder_id")
+    private String folderId;
 
-    protected Post(){
-        elements = new ArrayList<>();
-    }
+    public Post() {
 
-    public void addElement(PostElement postElement) {
-        elements.add(postElement);
-        postElement.setPost(this);
-    }
-
-    public void remove(PostElement postElement) {
-        elements.remove(postElement);
-        postElement.setPost(null);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        return postId != null && postId.equals(((Post) o).getPostId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(postId);
     }
 }

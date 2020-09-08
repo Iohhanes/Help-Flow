@@ -44,7 +44,18 @@ public class PostElement {
     @ManyToOne(fetch = FetchType.LAZY)
     @Getter
     @Setter
-    private Post post;
+    @JoinColumn(name = "answer_post_id")
+    private AnswerPost answerPostId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @Getter
+    @Setter
+    @JoinColumn(name = "question_post_id")
+    private QuestionPost questionPostId;
+
+    public PostElement() {
+
+    }
 
     @Override
     public boolean equals(Object o) {

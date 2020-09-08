@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,14 +21,23 @@ public class Tag {
     @Setter
     private Long tagId;
 
+    @Column(unique = true)
     @Getter
     @Setter
     private String value;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "tags")
     @Getter
     @Setter
-    private QuestionPost questionPost;
+    private List<QuestionPost> questionPosts = new ArrayList<>();
+
+    public Tag() {
+
+    }
+
+    public Tag(String value) {
+        this.value = value;
+    }
 
     @Override
     public boolean equals(Object o) {

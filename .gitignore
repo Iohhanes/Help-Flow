@@ -1,2 +1,5 @@
 /.idea
 /Help-Flow.iml
+/logs
+/target
+/src/main/resources/service_account.json
